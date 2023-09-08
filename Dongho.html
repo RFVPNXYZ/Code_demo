@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Đồng hồ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #clock {
+            font-size: 2em;
+            transition: color 0.5s ease-in-out; /* Thêm hiệu ứng chuyển đổi màu sắc */
+        }
+    </style>
+</head>
+<body>
+    <h1>Đồng hồ</h1>
+    <div id="clock"></div>
+
+    <script>
+        function updateTime() {
+            var now = new Date();
+            var hours = now.getHours().toString().padStart(2, "0");
+            var minutes = now.getMinutes().toString().padStart(2, "0");
+            var seconds = now.getSeconds().toString().padStart(2, "0");
+            var date = now.toLocaleDateString("vi-VN"); // Lấy ngày tháng năm theo định dạng ngôn ngữ Việt Nam
+
+            var timeString = hours + ":" + minutes + ":" + seconds + " " + date;
+            var clockElement = document.getElementById("clock");
+            clockElement.textContent = timeString;
+
+            // Tạo màu sắc ngẫu nhiên
+            var randomColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+            clockElement.style.color = randomColor;
+        }
+
+        setInterval(updateTime, 1000); // Cập nhật thời gian mỗi giây
+        updateTime(); // Cập nhật thời gian lần đầu khi trang web được tải
+    </script>
+</body>
+</html>
